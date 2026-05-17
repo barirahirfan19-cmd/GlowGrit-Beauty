@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GlowGrit Beauty</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+body {
+    margin:0;
+    font-family: 'Poppins', sans-serif;
+    background:#ffe4ec;
+}
+    
+/* Adjusted Logo to be a perfect circle */
+.nav-logo-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ff4f87;
+}
+
+/* NAVBAR */
+nav {
+    background: linear-gradient(90deg, #ffffff, #ffe4ec);
+    padding: 15px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+    border-bottom: 2px solid #ff4f87;
+    flex-wrap:wrap;
+}
+
+.nav-brand-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-logo-text {
+    font-family:'Great Vibes';
+    font-size:2rem;
+    color:#ff4f87;
+    cursor:pointer;
+}
+
+.nav-links {
+    display:flex;
+    gap:18px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.nav-links span {
+    cursor:pointer;
+    font-weight:500;
+    color:#333;
+}
+
+/* CART ICON */
+.cart-icon {
+    background:#ff4f87;
+    color:white;
+    padding:10px 12px;
+    border-radius:50%;
+    cursor:pointer;
+}
+
+/* PAGE SYSTEM */
+.page { display:none!important; }
+.page.active { display:block!important; }
+
+/* HOME */
+.home {
+    min-height:90vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:url('https://images.pexels.com/photos/2113855/pexels-photo-2113855.jpeg') center/cover;
+    color:white;
+    padding:20px;
+}
+
+.home h1 {
+    font-size:clamp(2rem, 6vw, 4rem);
+    font-family:'Great Vibes';
+    color:#ff4f87;
+}
+
+.home p {
+    margin-top:10px;
+    font-size:1.2rem;
+    color:#ffb6c1;
+    font-weight:500;
+}
+
+/* BUTTON */
+.btn {
+    padding:10px 20px;
+    background:#ff4f87;
+    color:white;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
+    margin-top:10px;
+    transition:0.3s;
+}
+
+.btn:hover {
+    background:#e03e75;
+}
+
+/* ABOUT */
+.about {
+    padding:0;
+    background:#fff7fa;
+}
+
+.about-hero{
+    height:55vh;
+    background:url('https://images.pexels.com/photos/3762879/pexels-photo-3762879.jpeg') center/cover;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.about-overlay{
+    background:rgba(255,255,255,0.75);
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    max-width:700px;
+    margin:20px;
+}
+
+.about-overlay h1{
+    font-size:3rem;
+    color:#ff4f87;
+    margin-bottom:10px;
+    font-family:'Great Vibes';
+}
+
+.about-overlay p{
+    color:#333;
+    line-height:1.7;
+}
+
+.about-wrapper{
+    padding:60px 20px;
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+    max-width:1200px;
+    margin:auto;
+}
+
+.about-image img{
+    width:100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+.about-text{
+    background:white;
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+}
+
+.about-text h2{
+    color:#ff4f87;
+    margin-bottom:15px;
+}
+
+.about-text p{
+    line-height:1.9;
+    color:#444;
+}
+
+/* WHY CHOOSE */
+.why-choose{
+    margin-top:80px;
+    text-align:center;
+}
+
+.why-choose h2{
+    color:#ff4f87;
+    margin-bottom:40px;
+}
+
+.choose-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.choose-card{
+    background:white;
+    padding:20px;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.choose-card:hover{
+    transform:translateY(-8px);
+}
+
+.choose-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+.choose-card h3{
+    margin-top:15px;
+    color:#ff4f87;
+}
+
+/* TEAM */
+.team-section{
+    margin-top:80px;
+    text-align:center;
+}
+
+.team-section h2{
+    color:#ff4f87;
+    margin-bottom:40px;
+}
+
+.team-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.team-card{
+    background:white;
+    padding:30px 20px;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+}
+
+.profile-placeholder{
+    width:100px;
+    height:100px;
+    background:#ffe4ec;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:40px;
+    margin:auto;
+    border:3px solid #ff4f87;
+}
+
+.team-card h3{
+    margin-top:15px;
+    color:#ff4f87;
+}
+
+/* PRODUCTS */
+.container {
+    padding:20px;
+    max-width:1400px;
+    margin:auto;
+}
+
+.product-grid {
+    display:grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap:20px;
+}
+
+.card {
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 4px 6px rgba(0,0,0,0.05);
+}
+
+.card img {
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+/* CART */
+.cart-item {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:white;
+    padding:15px;
+    margin:10px 0;
+    border-radius:10px;
+    gap:10px;
+}
+
+.qty-controls{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.qty-btn{
+    background:#ff4f87;
+    color:white;
+    border:none;
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:18px;
+}
+
+/* FORMS */
+form {
+    max-width:600px;
+    margin:20px auto;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+input, select, textarea {
+    padding:12px;
+    border-radius:8px;
+    border:1px solid #ddd;
+    width:100%;
+    box-sizing:border-box;
+    font-family: inherit;
+}
+
+/* THANK YOU */
+.thankyou {
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    box-sizing:border-box;
+}
+
+.thank-box {
+    background:rgba(255,255,255,0.95);
+    padding:50px 30px;
+    border-radius:25px;
+    max-width:500px;
+    width:100%;
+    text-align:center;
+    box-shadow:0 15px 35px rgba(0,0,0,0.1);
+    margin:auto;
+}
+
+.thank-box h1 {
+    color:#ff4f87;
+    font-family:'Great Vibes', cursive;
+    font-size:3.5rem;
+    margin-bottom:10px;
+}
+
+.text-center {
+    text-align:center;
+}
+
+/* FOOTER */
+footer{
+    background:#111;
+    color:white;
+    padding:60px 20px 30px;
+    margin-top:40px;
+}
+
+.footer-container{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:40px;
+}
+
+.footer-logo{
+    font-family:'Great Vibes';
+    font-size:3rem;
+    color:#ff4f87;
+}
+
+.footer-box h3{
+    color:#ff4f87;
+    margin-bottom:15px;
+}
+
+.footer-box p{
+    line-height:1.9;
+    color:#ddd;
+}
+
+.social-icons{
+    display:flex;
+    gap:15px;
+    margin-top:15px;
+}
+
+.social-icons a{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#ff4f87;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:20px;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.social-icons a:hover{
+    transform:translateY(-5px);
+}
+
+.copyright {
+      text-align: center;
+      margin-top: 30px;
+      border-top: 1px solid #333;
+      padding-top: 15px;
+      font-size: 14px;
+    }
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+   .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media(max-width:992px){
+   .about-grid,
+   .choose-grid,
+   .team-grid,
+   .footer-container{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:768px){
+   .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+   .nav-links {
+        justify-content:center;
+        width:100%;
+        margin-top:10px;
+    }
+   .about-grid,
+   .choose-grid,
+   .team-grid,
+   .footer-container{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:480px){
+   .product-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+#checkoutBtn {
+    display:none;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="nav-brand-container">
+
+        <!-- LOGO IMAGE -->
+        <img src="glowgrit-logo.png" alt="GlowGrit Logo" class="nav-logo-img">
+
+        <div class="nav-logo-text" onclick="showPage('home')">
+            GlowGrit
+        </div>
+    </div>
+
+    <div class="nav-links">
+        <span onclick="showPage('home')">Home</span>
+
+        <!-- REMOVED EXTRA GLOWGRIT BUTTON -->
+
+        <span onclick="showPage('about')">About</span>
+        <span onclick="showPage('products')">Products</span>
+        <span onclick="showPage('service')">Makeup Service</span>
+
+        <div class="cart-icon" onclick="showPage('cart')">
+            🛒 <span id="count">0</span>
+        </div>
+    </div>
+</nav>
+
+<div id="home" class="page active home">
+    <div>
+        <h1>GlowGrit</h1>
+        <p>Your glow, your confidence, your beauty.</p>
+        <button class="btn" onclick="showPage('products')">
+            Shop Now
+        </button>
+    </div>
+</div>
+
+<div id="about" class="page about">
+    <section class="about-hero">
+        <div class="about-overlay">
+            <h1>About GlowGrit</h1>
+            <p>
+                GlowGrit is more than beauty — it's confidence,
+                elegance, creativity and self-expression.
+            </p>
+        </div>
+    </section>
+
+    <div class="about-wrapper">
+        <div class="about-grid">
+
+            <div class="about-image">
+
+                <!-- ABOUT US IMAGE -->
+                <img src="about-us-image.png" alt="GlowGrit Beauty Highlight">
+
+            </div>
+
+            <div class="about-text">
+                <h2>Who We Are</h2>
+                <p>
+                    GlowGrit is a modern beauty and makeup brand designed
+                    for people who love elegance, glamour and confidence.
+                </p>
+                <p>
+                    Our products are carefully selected to help you create
+                    soft glam looks, bridal transformations, glitter makeup,
+                    everyday beauty and trendy K-beauty styles.
+                </p>
+
+                <button class="btn" onclick="showPage('service')">
+                    View Our Services
+                </button>
+            </div>
+        </div>
+
+        <div class="why-choose">
+            <h2>Why Choose GlowGrit?</h2>
+
+            <div class="choose-grid">
+
+                <div class="choose-card">
+                    <img src="https://images.pexels.com/photos/2533266/pexels-photo-2533266.jpeg" alt="Quality">
+                    <h3>Premium Quality</h3>
+                    <p>High quality beauty products made for long lasting glam.</p>
+                </div>
+
+                <div class="choose-card">
+                    <img src="https://images.pexels.com/photos/2253832/pexels-photo-2253832.jpeg" alt="Skin Friendly">
+                    <h3>Skin Friendly</h3>
+                    <p>Safe and comfortable makeup suitable for every skin type.</p>
+                </div>
+
+                <div class="choose-card">
+                    <img src="https://images.pexels.com/photos/2113855/pexels-photo-2113855.jpeg" alt="Professional">
+                    <h3>Professional Services</h3>
+                    <p>Professional makeup services with elegant beauty looks.</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="team-section">
+            <h2>Our GlowGrit Team</h2>
+
+            <div class="team-grid">
+
+                <div class="team-card">
+                    <div class="profile-placeholder">👤</div>
+                    <h3>Kinza Zahid</h3>
+                    <p>Creative Beauty Assistant</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="profile-placeholder">👤</div>
+                    <h3>Halima Sadia</h3>
+                    <p>Beauty Consultant</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="profile-placeholder">👤</div>
+                    <h3>Saviba Waheed</h3>
+                    <p>CEO & Founder</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="profile-placeholder">👤</div>
+                    <h3>Barirah Irfan</h3>
+                    <p>Assistant Manager</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="service" class="page container">
+   <h2 class="text-center" style="color: #ff4f87">
+    GlowGrit Makeup Appointment
+</h2>
+    <form onsubmit="submitService(event)">
+        <input required placeholder="Full Name" type="text" minlength="3" pattern="[A-Za-z\s]+" title="Name must be at least 3 letters">
+        <input type="email" required placeholder="Email">
+        <input required placeholder="Contact Number" type="tel" pattern="\d+" title="Please enter digits only">
+        <input required placeholder="Address" type="text" minlength="10" title="Please provide a full, proper address">
+        <input required placeholder="Age" type="number" min="16" title="Age must be 16 or older">
+        <input type="date" required>
+        <select required>
+            <option value="">Are you going on an event?</option>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+        <select required>
+            <option value="">Type of Occasion</option>
+            <option>Party</option>
+            <option>Wedding</option>
+            <option>Engagement</option>
+            <option>Everyday Look</option>
+            <option>Mall Look</option>
+            <option>Outing Look</option>
+            <option>Dawat Look</option>
+        </select>
+        <select required>
+            <option value="">Choose Service</option>
+            <option>Floral Glitter Makeup</option>
+            <option>Smoky High End Glitter</option>
+            <option>Glowgrit Special Makeup</option>
+            <option>Kpop Idol Makeup</option>
+            <option>Bridal Makeup Package</option>
+        </select>
+        <select required>
+            <option value="">Reference Makeup?</option>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+        <input placeholder="Reference details" type="text">
+        <select required>
+            <option value="">Skin Tone</option>
+            <option>Fair</option>
+            <option>Light</option>
+            <option>Medium</option>
+            <option>Deep</option>
+        </select>
+        <select required>
+            <option value="">Skin Type</option>
+            <option>Normal</option>
+            <option>Dry</option>
+            <option>Oily</option>
+            <option>Combination</option>
+            <option>Sensitive</option>
+        </select>
+        <input required placeholder="No of People" type="number" min="1" pattern="\d+" title="Please enter a valid number">
+        <select required>
+            <option value="">Preferred Contact Method</option>
+            <option>Email</option>
+            <option>Phone</option>
+            <option>Instagram</option>
+        </select>
+        <textarea required placeholder="Comments or Notes (Please write properly)" minlength="10"></textarea>
+        <button type="submit" class="btn">
+            Book Appointment
+        </button>
+    </form>
+</div>
+
+<div id="serviceSuccess" class="page thankyou">
+    <div class="thank-box">
+        <h1>Appointment Successful</h1>
+        <p>Your appointment has been successfully booked.</p>
+        <button class="btn" onclick="showPage('products')">
+            Go to Shop
+        </button>
+    </div>
+</div>
+
+<div id="products" class="page">
+    <div class="container">
+       <h2 style="text-align:center; margin-bottom:30px; color:#ff4f87;">
+    Our Premium Collection
+</h2>
+        <div class="product-grid" id="productList"></div>
+    </div>
+</div>
+
+<div id="cart" class="page">
+    <div class="container">
+        <h2>Your Cart</h2>
+        <div id="cartItems"></div>
+        <h3 id="total" style="margin-top:20px;"></h3>
+        <button class="btn" id="checkoutBtn" onclick="showPage('consultation')">
+            Proceed to Order
+        </button>
+    </div>
+</div>
+
+<div id="consultation" class="page container">
+    <h2 style="text-align:center; color:#ff4f87;">
+    Order Form
+</h2>
+    <form onsubmit="submitOrder(event)">
+        <input required placeholder="Full Name" type="text" minlength="3" pattern="[A-Za-z\s]+" title="Name must be at least 3 letters">
+        <input type="email" required placeholder="Email">
+        <input required placeholder="Home Address" type="text" minlength="10" title="Please provide a full, proper address">
+        <select required>
+            <option value="">Select Country</option>
+            <option>Pakistan</option>
+            <option>United Arab Emirates</option>
+            <option>United Kingdom</option>
+            <option>USA</option>
+        </select>
+        <select required>
+            <option value="">Select City</option>
+            <option>Karachi</option>
+            <option>Lahore</option>
+            <option>Islamabad</option>
+            <option>Dubai</option>
+            <option>London</option>
+            <option>New York</option>
+        </select>
+        <input required placeholder="Age" type="number" min="16" title="Age must be 16 or older">
+        <button type="submit" class="btn">
+            Submit
+        </button>
+    </form>
+</div>
+
+<div id="thankyou" class="page thankyou">
+    <div class="thank-box">
+        <h1>Thank You!</h1>
+        <p>Your order is confirmed.</p>
+        <button class="btn" onclick="showPage('home')">
+            Return Home
+        </button>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-box">
+            <div class="footer-logo">GlowGrit</div>
+            <p>
+                Luxury beauty products and makeup services designed
+                to make every person feel elegant, confident and glowing.
+            </p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+        <div class="footer-box">
+            <h3>Contact Info</h3>
+            <p>CEO: Saviba Waheed <br>0324232729</p>
+            <p>Assistant Manager: Barirah Irfan <br>0329999999</p>
+            <p>WhatsApp Support: 0234677888</p>
+        </div>
+        <div class="footer-box">
+            <h3>Policies</h3>
+       <p>Privacy Policy</p>
+       <p>Terms and conditions</p>
+       <p>Instagram: glow_with_the_flow_glowgrit</p>
+       <div class="copyright">
+      © 2026 GlowGrit Cosmetics. All Rights Reserved.
+    </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Logic to Switch Pages
+function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo(0,0);
+}
+
+const products = [
+    {name:"Lipstick",price:850,img:"https://images.pexels.com/photos/7256096/pexels-photo-7256096.jpeg"},
+    {name:"Lip Gloss",price:750,img:"https://images.pexels.com/photos/19572463/pexels-photo-19572463.jpeg"},
+    {name:"Eyeshadow",price:1200,img:"https://images.pexels.com/photos/1340925/pexels-photo-1340925.jpeg"},
+    {name:"Blush",price:650,img:"https://images.pexels.com/photos/2533266/pexels-photo-2533266.jpeg"},
+    {name:"Mascara",price:890,img:"https://images.pexels.com/photos/4938457/pexels-photo-4938457.jpeg"},
+    {name:"Setting Spray",price:1100,img:"https://images.pexels.com/photos/13964189/pexels-photo-13964189.jpeg"},
+    {name:"Foundation",price:1400,img:"https://images.pexels.com/photos/27676711/pexels-photo-27676711.jpeg"},
+    {name:"Highlighter",price:950,img:"https://images.pexels.com/photos/5403549/pexels-photo-5403549.jpeg"},
+    {name:"Primer",price:1250,img:"https://images.pexels.com/photos/30836150/pexels-photo-30836150.jpeg"},
+    {name:"Brush Set",price:1800,img:"https://images.pexels.com/photos/1499511/pexels-photo-1499511.jpeg"}
+];
+
+let cart = [];
+const list = document.getElementById("productList");
+
+products.forEach((p)=>{
+    const div=document.createElement("div");
+    div.className="card";
+    div.innerHTML=`
+        <img src="${p.img}" alt="${p.name}">
+        <h4>${p.name}</h4>
+        <p>PKR ${p.price}</p>
+        <button class="btn">Add to Cart</button>
+    `;
+    div.querySelector("button").onclick=()=>{
+        const existing = cart.find(item => item.name === p.name);
+        if(existing){
+            existing.qty += 1;
+        }else{
+            cart.push({...p, qty:1});
+        }
+        updateCart();
+        // Popup Feature Added
+        alert(p.name + " has been added to your cart! ✨");
+    };
+    list.appendChild(div);
+});
+
+function changeQty(index, amount) {
+    cart[index].qty += amount;
+    if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+    }
+    updateCart();
+}
+
+function updateCart(){
+    let itemsDiv = document.getElementById("cartItems");
+    let totalDiv = document.getElementById("total");
+    let countSpan = document.getElementById("count");
+    let checkoutBtn = document.getElementById("checkoutBtn");
+    
+    let total = 0;
+   let totalItems = 0;
+    itemsDiv.innerHTML = "";
+
+    if(cart.length === 0){
+        itemsDiv.innerHTML = "<p>Your cart is empty</p>";
+        checkoutBtn.style.display = "none";
+        totalDiv.innerHTML = "";
+        countSpan.innerText = "0";
+    } else {
+        checkoutBtn.style.display = "block";
+        cart.forEach((item, i) => {
+            total += item.price * item.qty;
+            totalItems += item.qty;
+              itemsDiv.innerHTML += `
+            <div class="cart-item">
+                <div>
+                    <strong>${item.name}</strong><br>
+                    PKR ${item.price} x ${item.qty} = PKR ${item.price * item.qty}
+                </div>
+                <div class="qty-controls">
+                    <button class="qty-btn" onclick="changeQty(${i}, -1)">-</button>
+                    <span>${item.qty}</span>
+                    <button class="qty-btn" onclick="changeQty(${i}, 1)">+</button>
+                </div>
+            </div>`;
+        });
+        totalDiv.innerHTML = "Total: PKR " + total;
+        countSpan.innerText = totalItems;
+    }
+}
+
+function submitService(event) {
+    event.preventDefault();
+    showPage('serviceSuccess');
+}
+
+function submitOrder(event) {
+    event.preventDefault();
+    cart = [];
+    updateCart();
+    showPage('thankyou');
+}
+</script>
+</body>
+</html>
